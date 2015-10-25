@@ -2,15 +2,19 @@
 <html>
 
     <head>
-        <meta charset="UTF-8"> 
+        <meta charset="UTF-8">         
+        <script src="./js/jquery-1.11.3.js"></script>
+        <script src="./js/jsonHandler.js" ></script>  
+        <link rel="stylesheet" type="text/css" href="./css/main.css">
         
-        <script type="text/javascript" src="jsonHandler.js" ></script>
         <title>RTM Level Editor</title>
     </head>
 
     <body>
         <h1>Test</h1>        
-        <button type="button" onclick=alert(today())>Get the date</button>
+        <button type="button" onclick=alert(getCurrentDate())>Get the date</button>
+        <button type="button" onclick=getJson("./levels/example.json")>Read a Json file</button>
+        
     </body>
 
 </html>

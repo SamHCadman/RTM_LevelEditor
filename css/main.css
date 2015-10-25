@@ -1,0 +1,26 @@
+html {
+    background-color: #293772;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    margin: 0 auto;
+    padding: 2em 2em 4em;
+    max-width: 800px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5em;
+    color: #545454;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #A8972E;
+    font-weight: 600;
+    line-height: 1.3em;
+}
+
+button{
+    color: #293772;
+    background-color: #A86C2E;
+    border: none;
+}
