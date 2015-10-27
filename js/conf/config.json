@@ -1,0 +1,16 @@
+{
+	"units":[
+		{"type":"assassin", "display":"Assassin"},
+        {"type":"canon", "display":"Canon"},
+        {"type":"basicDragonet", "display":"Dragonet"},
+        {"type":"fireDragonet", "display":"Dragonet de Feu"},
+		{"type":"iceDragonet", "display":"Dragonet de Glace"},        
+        {"type":"basicLancer", "display":"Lancier"},
+        {"type":"fireLancer", "display":"Lancier de Feu"},
+        {"type":"iceLancer", "display":"Lancier de Glance"},        
+        {"type":"wall", "display":"Murret"},
+        {"type":"health", "display":"Vie"},
+        {"type":"invicibility", "display":"Invincibilité"},
+        {"type":"power", "display":"Pouvoir"}
+    ]
+}

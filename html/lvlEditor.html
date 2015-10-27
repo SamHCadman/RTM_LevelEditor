@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">         
+        <link rel="stylesheet" type="text/css" href="../css/main.css">
+        <script src="../js/jquery-1.11.3.js"></script>
+        <script src="../js/jsonHandler.js" ></script>        
+        <title>RTM Level Editor</title>
+    </head>
+
+    <body>
+        <script>
+            initUnits();
+        </script>
+        <!-- Page header -->
+        <header>
+            <h1>Rush The Music - Level Editor</h1>
+            <!-- Various buttons -->
+            <nav>
+                <button type="button" onclick=alert(getCurrentDate())>Nouveau niveau</button>
+                <button type="button" onclick=alert(getCurrentDate())>Charger un niveau existant</button>
+                <button type="button" onclick=alert(getCurrentDate())>Utiliser une musique</button>   
+            </nav>
+        </header>
+        
+        <!-- Content --> 
+        <div id="content">
+            <!-- Units list -->
+            <div id="units">                               
+            </div>
+
+            <!-- Display json file -->
+            <div id="json">                
+                <textarea id="jsonContent" ></textarea>
+                <button id="delete" type="button" onclick=alert(getCurrentDate())>Tout supprimer</button>
+                <button id="save" type="button" onclick=alert(getCurrentDate())>Sauvegarder</button>   
+            </div>
+        </div>
+        <!-- Footer, if we ever need it-->
+        <footer></footer>
+    </body>
+
+</html>

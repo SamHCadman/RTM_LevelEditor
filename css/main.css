@@ -1,26 +1,83 @@
 html {
-    background-color: #293772;
+    background-color: #432A19;
     -webkit-font-smoothing: antialiased;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    margin: 0 auto;
-    padding: 2em 2em 4em;
-    max-width: 800px;
+    margin: 0;
+    padding: 0;
+    /*max-width: 800px;*/
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 16px;
+    font-size: 20px;
     line-height: 1.5em;
-    color: #545454;
 }
-
+header{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100px;
+    background-color: #432A19;
+}
+nav{
+    margin: 0;
+    padding: 0;
+}
+footer{
+    width: 100%;
+    height: 50px;
+}
 h1, h2, h3, h4, h5, h6 {
-    color: #A8972E;
+    color: #A79067;
     font-weight: 600;
     line-height: 1.3em;
+    margin: 0;
+    padding: 1%;
 }
 
 button{
-    color: #293772;
-    background-color: #A86C2E;
+    color: #432A19;
+    background-color: #AD7005;
+    font-size: 16px;
     border: none;
+    margin: 0% 1%;
+    cursor: pointer;
+}
+
+#content{
+    width: 100%;
+    height: 500px;
+    margin: 1%;
+}
+
+#json, #units{
+    border: solid 1px brown;
+    background-color: aqua;
+    width: 49%;
+    height: 100%;
+    float: left;
+}
+
+#jsonContent{
+    float:right;
+	width: 100%;
+	height: 100%;
+	resize: none;
+	padding: 0;
+	margin: 0;    
+}
+
+#delete{
+    margin-top: 1%;
+    margin-left: 0%;
+    float: left;
+}
+
+#save{
+    margin-top: 1%;
+    margin-right: 0%;
+    float: right;
 }

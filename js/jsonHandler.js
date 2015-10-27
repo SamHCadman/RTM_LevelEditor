@@ -1,3 +1,10 @@
+var fs = require('fs');
+
+//files
+//var jsonExample = require('../json/example.json');
+var PATH_CONFIG = "./js/conf/config.json";
+
+
 /********************************/
 /* Return current hour and date */
 /* Purpose is only for tests    */
@@ -26,11 +33,20 @@ function getCurrentDate() {
 /* argument > path to the file      */
 /************************************/
 function getJson(path){
-    $.ajax({
-        url: path,
-        success: function (data) {
-            var obj = JSON.parse(data);
-            console.log(obj);
-        }
-    });
+    console.log("getJson::RETURN");
+    return JSON.parse(fs.readFileSync(path, 'utf8'));
+}
+
+/******************************************/
+/* initialize the list of units available */
+/* Fill the form containing that list     */
+/******************************************/
+function initUnits(){
+    console.log("initUnits::START");
+    console.log(process.cwd()); //display current directory
+    
+    
+    var list = getJson(PATH_CONFIG);
+    console.log(list['units']);
+    console.log("initUnits::END");
 }
