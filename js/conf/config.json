@@ -3,14 +3,14 @@
 		{"type":"assassin", "display":"Assassin"},
         {"type":"canon", "display":"Canon"},
         {"type":"basicDragonet", "display":"Dragonet"},
-        {"type":"fireDragonet", "display":"Dragonet de Feu"},
-		{"type":"iceDragonet", "display":"Dragonet de Glace"},        
-        {"type":"basicLancer", "display":"Lancier"},
-        {"type":"fireLancer", "display":"Lancier de Feu"},
-        {"type":"iceLancer", "display":"Lancier de Glance"},        
-        {"type":"wall", "display":"Murret"},
-        {"type":"health", "display":"Vie"},
-        {"type":"invicibility", "display":"Invincibilité"},
-        {"type":"power", "display":"Pouvoir"}
+        {"type":"fireDragonet", "display":"Fire Dragonet"},
+		{"type":"iceDragonet", "display":"Ice Dragonet"},        
+        {"type":"basicLancer", "display":"Lancer"},
+        {"type":"fireLancer", "display":"Fire Lancer"},
+        {"type":"iceLancer", "display":"Ice Lancer"},        
+        {"type":"wall", "display":"Wall"},
+        {"type":"health", "display":"Health"},
+        {"type":"invicibility", "display":"God"},
+        {"type":"power", "display":"Power"}
     ]
 }

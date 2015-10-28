@@ -15,9 +15,10 @@
             <h1>Rush The Music - Level Editor</h1>
             <!-- Various buttons -->
             <nav>
-                <button type="button" onclick=newLevel($("#jsonContent"))>Nouveau niveau</button>
-                <button type="button" onclick=alert(getCurrentDate())>Charger un niveau existant</button>
-                <button type="button" onclick=alert(getCurrentDate())>Utiliser une musique</button>   
+<!--                <button type="button" onclick='$("#jsonContent").html(""); newLevel($("#jsonContent"));'>Nouveau niveau</button>-->
+                <button type="button" onclick=newLevel($("#jsonContent"))>New level</button>
+                <button type="button" onclick=alert(getCurrentDate())>Load an existing level</button>
+                <button type="button" onclick=alert(getCurrentDate())>Choose a music</button>   
             </nav>
         </header>
         
@@ -30,16 +31,17 @@
 
             <!-- Display json file -->
             <div id="json">                
-                <textarea id="jsonContent" ></textarea>
-                <button id="delete" type="button" onclick=alert(getCurrentDate())>Tout supprimer</button>
-                <button id="save" type="button" onclick=alert(getCurrentDate())>Sauvegarder</button>   
+                <!-- <textarea id="jsonContent" ></textarea> -->
+                <div id="jsonContent"></div>
+                <button id="delete" type="button" onclick=alert(getCurrentDate())>Empty</button>
+                <button id="save" type="button" onclick=alert(getCurrentDate())>Save</button>   
             </div>
         </div>
         <!-- Footer, if we ever need it-->
         <footer></footer>
         
         <script>
-            initUnits($( "#possibilities" ));
+            initUnits($( "#possibilities" )); // init the elements to add
         </script>
     </body>
 

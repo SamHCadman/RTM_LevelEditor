@@ -2,7 +2,8 @@ var fs = require('fs');
 
 // FILES
 var PATH_CONFIG = "./js/conf/config.json";
-
+// variables
+var levelFile = {};
 
 /********************************/
 /* Return current hour and date */
@@ -32,8 +33,23 @@ function getCurrentDate() {
 /* @rgument > path to the file      */
 /************************************/
 function getJson(path){
-    console.log("getJson::RETURN");
     return JSON.parse(fs.readFileSync(path, 'utf8'));
+}
+
+/*************************************/
+/* Init the JSON object representing */
+/* the level.                        */
+/*************************************/
+function initJson(){
+    levelFile.name = "";
+    levelFile.music = "";
+    levelFile.map = "";
+    levelFile.tutorial = "false";
+    levelFile.items = {};
+    levelFile.items.ennemies = [];
+    levelFile.items.objects = [];
+    
+    console.log(levelFile);
 }
 
 /********************************************/
@@ -49,18 +65,20 @@ function initUnits(container){
     
     //get the list of elements to display    
     var list = getJson(PATH_CONFIG);
-    console.log(list.units);
+    //console.log(list.units);
     
     for (var key in list['units']){
-        // preparing the li element to add to the #possibilities list
+        // preparing the li element to be added to the #possibilities list
         var li = "<li name=\"" + list.units[key].type;
-        li += "\" onclick=alert(\"" + list.units[key].type;
+        li += "\" onclick=addUnit(\"" + list.units[key].type;
         li +=  "\") > <p class=\"plus\">+</p>" ;
         li += list.units[key].display;
         li += "</li>";
         
         container.append(li);        
     }
+    
+    initJson(); //so the JSON object is initialized
     //console.log("initUnits::END");
 }
 
@@ -68,8 +86,24 @@ function initUnits(container){
 /* Ajouter l'unité à la liste des éléments*/
 /* du niveau                              */
 /******************************************/
-function addUnit(){
+function addUnit(unit){
+    var newItem = {};
+    newItem.type = unit;
+    newItem.position_seconds = 0;
+    newItem.position_x = 0;
     
+    switch(unit){
+        case "health":
+        case "invicibility":
+        case "power":
+            levelFile.items.objects.push(newItem);
+            break;
+        default:
+            levelFile.items.ennemies.push(newItem);
+            break;
+    }
+
+    console.log(levelFile);
 }
 
 /********************************************/
@@ -78,36 +112,23 @@ function addUnit(){
 /*  container = DOM element to which stuff  */
 /*  is going to be attached                 */
 /********************************************/
-/*
-{
-"name" : "Final",
-"music" : "son2.wav",
-"map" : "terrain3",
-"tutorial" : "false",
-"items" : {*/
-
 function newLevel(container){
-    var levelFile = {};
-    levelFile.name = "";
-    levelFile.music = "";
-    levelFile.map = "";
-    levelFile.tutorial = "false";
-    levelFile.items = {};
-    levelFile.items.ennemies = [];
-    levelFile.items.objects = [];
+    clean(container); //remove previous content
     
-    /*var foo = {};
-    foo.name = "foo";
-    foo.type = "test";    
-    levelFileHeader.items.ennemies.push(foo);*/ //just an example of how to add an object
-    
-    console.log(levelFile);
+    initJson(); // initialise the JSON object
     
     // add that to the container
-    container.append(levelFile);
+    container.append("<p>" + JSON.stringify(levelFile) + "</p>");
 }
 
-
+/************************************************/
+/* Remove all childs of the specified element   */
+/* @rg >                                        */
+/*  container = DOM element to empty            */  
+/************************************************/
+function clean(container){
+    container.html("");    
+}
 
 
 
