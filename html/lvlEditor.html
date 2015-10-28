@@ -16,7 +16,7 @@
             <!-- Various buttons -->
             <nav>
 <!--                <button type="button" onclick='$("#jsonContent").html(""); newLevel($("#jsonContent"));'>Nouveau niveau</button>-->
-                <button type="button" onclick=newLevel($("#jsonContent"))>New level</button>
+                <button type="button" onclick=newLevel()>New level</button>
                 <button type="button" onclick=alert(getCurrentDate())>Load an existing level</button>
                 <button type="button" onclick=alert(getCurrentDate())>Choose a music</button>   
             </nav>
@@ -41,7 +41,7 @@
         <footer></footer>
         
         <script>
-            initUnits($( "#possibilities" )); // init the elements to add
+            init($( "#possibilities" ), $("#jsonContent")); // init the elements to add
         </script>
     </body>
 

@@ -4,6 +4,8 @@ var fs = require('fs');
 var PATH_CONFIG = "./js/conf/config.json";
 // variables
 var levelFile = {};
+var unitList;
+var contentDisplay;
 
 /********************************/
 /* Return current hour and date */
@@ -59,9 +61,15 @@ function initJson(){
 /*  container = DOM element to which, the   */
 /*  units list will be attached             */
 /********************************************/
-function initUnits(container){
+function init(listDisplay, jsonDisplay){
     //console.log("initUnits::START");
     //console.log(process.cwd()); //display current directory
+    
+    // initialisation of the elements we'll use for the display
+    unitList = listDisplay;
+    contentDisplay = jsonDisplay; 
+    
+    initJson(); //initalization of  JSON object
     
     //get the list of elements to display    
     var list = getJson(PATH_CONFIG);
@@ -75,16 +83,18 @@ function initUnits(container){
         li += list.units[key].display;
         li += "</li>";
         
-        container.append(li);        
+        unitList.append(li);        
     }
     
-    initJson(); //so the JSON object is initialized
+    
     //console.log("initUnits::END");
 }
 
 /******************************************/
 /* Ajouter l'unité à la liste des éléments*/
 /* du niveau                              */
+/* @rg >                                  */
+/*  unit = the unit to add                */
 /******************************************/
 function addUnit(unit){
     var newItem = {};
@@ -103,6 +113,8 @@ function addUnit(unit){
             break;
     }
 
+    clean(contentDisplay);
+    contentDisplay.append(JSON.stringify(levelFile));
     console.log(levelFile);
 }
 
@@ -112,13 +124,13 @@ function addUnit(unit){
 /*  container = DOM element to which stuff  */
 /*  is going to be attached                 */
 /********************************************/
-function newLevel(container){
-    clean(container); //remove previous content
+function newLevel(){
+    clean(contentDisplay); //remove previous content
     
     initJson(); // initialise the JSON object
     
     // add that to the container
-    container.append("<p>" + JSON.stringify(levelFile) + "</p>");
+    contentDisplay.append(JSON.stringify(levelFile));
 }
 
 /************************************************/
