@@ -53,12 +53,23 @@ button{
     margin: 1%;
 }
 
+#possibilities{
+    list-style-type:none;
+    cursor: pointer;
+}
+
 #json, #units{
     border: solid 1px brown;
     background-color: aqua;
-    width: 49%;
     height: 100%;
     float: left;
+}
+
+#units{
+    width: 300px; 
+}
+#json{
+    width: 650px;
 }
 
 #jsonContent{
@@ -80,4 +91,10 @@ button{
     margin-top: 1%;
     margin-right: 0%;
     float: right;
+}
+
+.plus{
+    display: inline;
+    margin-right: 1%;
+    font-weight: bold;
 }

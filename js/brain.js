@@ -1,7 +1,6 @@
 var fs = require('fs');
 
-//files
-//var jsonExample = require('../json/example.json');
+// FILES
 var PATH_CONFIG = "./js/conf/config.json";
 
 
@@ -30,7 +29,7 @@ function getCurrentDate() {
 
 /************************************/
 /* Return the content of a JSON file*/
-/* argument > path to the file      */
+/* @rgument > path to the file      */
 /************************************/
 function getJson(path){
     console.log("getJson::RETURN");
@@ -41,12 +40,38 @@ function getJson(path){
 /* initialize the list of units available */
 /* Fill the form containing that list     */
 /******************************************/
-function initUnits(){
-    console.log("initUnits::START");
-    console.log(process.cwd()); //display current directory
+function initUnits(container){
+    //console.log("initUnits::START");
+    //console.log(process.cwd()); //display current directory
     
-    
+    //get the list of elements to display    
     var list = getJson(PATH_CONFIG);
     console.log(list['units']);
-    console.log("initUnits::END");
+    
+    for (var key in list['units']){
+        // preparing the li element to add to the #possibilities list
+        var li = "<li name=\"" + list['units'][key]['type'];
+        li += "\" onclick=alert(\"" + list['units'][key]['type'];
+        li +=  "\") > <p class=\"plus\">+</p>" ;
+        li += list['units'][key]['display'];
+        li += "</li>";
+        
+        container.append(li);        
+    }
+    //console.log("initUnits::END");
+}
+
+/******************************************/
+/* Ajouter l'unité à la liste des éléments*/
+/* du niveau                              */
+/******************************************/
+function addUnit{
+    
+}
+
+/******************************************/
+/* Créer un nouveau niveau                */
+/******************************************/
+function newLevel(){
+    
 }
