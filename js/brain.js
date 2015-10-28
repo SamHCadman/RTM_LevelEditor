@@ -36,24 +36,27 @@ function getJson(path){
     return JSON.parse(fs.readFileSync(path, 'utf8'));
 }
 
-/******************************************/
-/* initialize the list of units available */
-/* Fill the form containing that list     */
-/******************************************/
+/********************************************/
+/* initialize the list of units available   */
+/* Fill the form containing that list       */
+/* @rg >                                    */
+/*  container = DOM element to which, the   */
+/*  units list will be attached             */
+/********************************************/
 function initUnits(container){
     //console.log("initUnits::START");
     //console.log(process.cwd()); //display current directory
     
     //get the list of elements to display    
     var list = getJson(PATH_CONFIG);
-    console.log(list['units']);
+    console.log(list.units);
     
     for (var key in list['units']){
         // preparing the li element to add to the #possibilities list
-        var li = "<li name=\"" + list['units'][key]['type'];
-        li += "\" onclick=alert(\"" + list['units'][key]['type'];
+        var li = "<li name=\"" + list.units[key].type;
+        li += "\" onclick=alert(\"" + list.units[key].type;
         li +=  "\") > <p class=\"plus\">+</p>" ;
-        li += list['units'][key]['display'];
+        li += list.units[key].display;
         li += "</li>";
         
         container.append(li);        
@@ -65,13 +68,54 @@ function initUnits(container){
 /* Ajouter l'unité à la liste des éléments*/
 /* du niveau                              */
 /******************************************/
-function addUnit{
+function addUnit(){
     
 }
 
-/******************************************/
-/* Créer un nouveau niveau                */
-/******************************************/
-function newLevel(){
+/********************************************/
+/* Créer un nouveau niveau                  */
+/* @rg >                                    */
+/*  container = DOM element to which stuff  */
+/*  is going to be attached                 */
+/********************************************/
+/*
+{
+"name" : "Final",
+"music" : "son2.wav",
+"map" : "terrain3",
+"tutorial" : "false",
+"items" : {*/
+
+function newLevel(container){
+    var levelFile = {};
+    levelFile.name = "";
+    levelFile.music = "";
+    levelFile.map = "";
+    levelFile.tutorial = "false";
+    levelFile.items = {};
+    levelFile.items.ennemies = [];
+    levelFile.items.objects = [];
     
+    /*var foo = {};
+    foo.name = "foo";
+    foo.type = "test";    
+    levelFileHeader.items.ennemies.push(foo);*/ //just an example of how to add an object
+    
+    console.log(levelFile);
+    
+    // add that to the container
+    container.append(levelFile);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
