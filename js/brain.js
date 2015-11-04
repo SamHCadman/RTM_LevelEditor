@@ -7,28 +7,8 @@ var levelFile = {};
 var unitList;
 var contentDisplay;
 
-/********************************/
-/* Return current hour and date */
-/* Purpose is only for tests    */
-/********************************/
-function getCurrentDate() {
-    var today = new Date();
-    var dd = today.getDate();
-    var mm = today.getMonth() + 1; //January is 0!
-    var yyyy = today.getFullYear();
-    var hh = today.getHours();
-    var min = today.getMinutes();
-
-    if (dd < 10) {
-        dd = '0' + dd;
-    }
-
-    if (mm < 10) {
-        mm = '0' + mm;
-    }
-    console.log("Date processed, currently returning it...");
-    return dd + '/' + mm + '/' + yyyy + ' ' + hh + ':' + min;
-}
+//TODO
+// 1) to keep the scroll bottom http://stackoverflow.com/questions/18614301/keep-overflow-div-scrolled-to-bottom-unless-user-scrolls-up 
 
 /************************************/
 /* Return the content of a JSON file*/
@@ -50,19 +30,19 @@ function initJson(){
     levelFile.items = {};
     levelFile.items.ennemies = [];
     levelFile.items.objects = [];
-    
-    console.log(levelFile);
 }
 
 /********************************************/
-/* initialize the list of units available   */
-/* Fill the form containing that list       */
+/* initialize the different elements of the */
+/* interface (json object, choice for units)*/
 /* @rg >                                    */
-/*  container = DOM element to which, the   */
+/*  listDisplay = DOM element to which, the */
 /*  units list will be attached             */
+/*  jsonDisplay = DOM element to display the*/
+/*  curent level                            */
 /********************************************/
 function init(listDisplay, jsonDisplay){
-    //console.log("initUnits::START");
+    //console.log("init::START");
     //console.log(process.cwd()); //display current directory
     
     // initialisation of the elements we'll use for the display
@@ -72,22 +52,18 @@ function init(listDisplay, jsonDisplay){
     initJson(); //initalization of  JSON object
     
     //get the list of elements to display    
-    var list = getJson(PATH_CONFIG);
-    //console.log(list.units);
-    
-    for (var key in list['units']){
-        // preparing the li element to be added to the #possibilities list
+    var list = getJson(PATH_CONFIG);    
+    // preparing each element and add it to the #possibilities list
+    for (var key in list['units']){        
         var li = "<li name=\"" + list.units[key].type;
         li += "\" onclick=addUnit(\"" + list.units[key].type;
         li +=  "\") > <p class=\"plus\">+</p>" ;
         li += list.units[key].display;
-        li += "</li>";
-        
+        li += "</li>";        
         unitList.append(li);        
     }
     
-    
-    //console.log("initUnits::END");
+    //console.log("init::END");
 }
 
 /******************************************/
@@ -112,11 +88,22 @@ function addUnit(unit){
             levelFile.items.ennemies.push(newItem);
             break;
     }
-
+    
+    //managing the display of the 
     clean(contentDisplay);
-    contentDisplay.append(JSON.stringify(levelFile));
+    //contentDisplay.append(JSON.stringify(levelFile));
+    displayLevel();
     console.log(levelFile);
 }
+
+/********************************************/
+/* Set up the display of the JSON object    */
+/********************************************/
+function displayLevel(){
+    contentDisplay.append(JSON.stringify(levelFile));
+    
+}
+
 
 /********************************************/
 /* Créer un nouveau niveau                  */
@@ -125,12 +112,11 @@ function addUnit(unit){
 /*  is going to be attached                 */
 /********************************************/
 function newLevel(){
-    clean(contentDisplay); //remove previous content
-    
-    initJson(); // initialise the JSON object
-    
+    clean(contentDisplay); //remove previous content    
+    initJson(); // re-initialize JSON object    
     // add that to the container
-    contentDisplay.append(JSON.stringify(levelFile));
+    //contentDisplay.append(JSON.stringify(levelFile));
+    displayLevel();
 }
 
 /************************************************/
@@ -142,7 +128,25 @@ function clean(container){
     container.html("");    
 }
 
+// return current date and time, just for tests
+function getCurrentDate() {
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth() + 1; //January is 0!
+    var yyyy = today.getFullYear();
+    var hh = today.getHours();
+    var min = today.getMinutes();
 
+    if (dd < 10) {
+        dd = '0' + dd;
+    }
+
+    if (mm < 10) {
+        mm = '0' + mm;
+    }
+    console.log("Date processed, currently returning it...");
+    return dd + '/' + mm + '/' + yyyy + ' ' + hh + ':' + min;
+}
 
 
 

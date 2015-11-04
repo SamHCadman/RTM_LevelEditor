@@ -10,7 +10,7 @@
         {"type":"iceLancer", "display":"Ice Lancer"},        
         {"type":"wall", "display":"Wall"},
         {"type":"health", "display":"Health"},
-        {"type":"invicibility", "display":"God"},
+        {"type":"invicibility", "display":"All Mighty"},
         {"type":"power", "display":"Power"}
     ]
 }
